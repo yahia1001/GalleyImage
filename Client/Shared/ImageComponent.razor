@@ -1,0 +1,69 @@
+﻿<div>
+    <label>@Label</label>
+    <div>
+        
+        <InputFile multiple accept=".jpg,.png,.jpeg" OnChange="@AfterChange"/>
+    </div>
+</div>
+
+<div>
+    @if (imageBase64 != null)
+    {
+
+        <div>
+            <div style="margin:10px;">
+                @foreach (var poster in imageBase64)
+                {
+                    <img src="data:image/jpeg;base64, @poster" style="width:400px;" />
+                }
+            </div>
+        </div>
+     }
+
+    @if (ImageURL != null)
+    {
+
+        <div>
+            <div style="margin:10px;">
+
+                @foreach (var img in ImageURL)
+                {
+                    <img src="@img" style="width:400px;" />
+                }
+
+            </div>
+        </div>
+    }
+</div>
+
+@code { 
+    [Parameter] public string Label { get; set; } = "Picture";
+    [Parameter] public EventCallback<string> OnSelectedImage { get; set; }
+    [Parameter] public List<string> ImageURL { get; set; }
+
+    private List<string> imageBase64  = new List<string>();
+    private string ImageBase;
+
+    public async Task AfterChange(InputFileChangeEventArgs e)
+    {
+        var imagesFiles = e.GetMultipleFiles();
+
+        foreach (var image in imagesFiles)
+        {
+            var buffer = new byte[image.Size];
+            await image.OpenReadStream().ReadAsync(buffer);
+            ImageBase = Convert.ToBase64String(buffer);
+
+            imageBase64.Add(ImageBase);
+
+            foreach (var poster in imageBase64)
+            {
+                await OnSelectedImage.InvokeAsync(poster);
+            }
+
+            ImageURL = null;
+            StateHasChanged();
+
+        }
+    }
+  }

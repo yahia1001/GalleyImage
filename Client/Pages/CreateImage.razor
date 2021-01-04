@@ -1,0 +1,26 @@
+﻿@page "/CreateImage"
+@inject IRepository rep
+@inject NavigationManager Nav
+
+<ImageForm Image="Image" OnValidSubmit="@SaveImage" />
+
+
+@code {
+    private Image Image { get; set; } = new Image();
+
+    private async Task SaveImage()
+    {
+
+        try
+        {
+            await rep.CreateImage(Image);
+            Nav.NavigateTo("gallery");
+        }
+        catch (Exception e)
+        {
+
+            Console.WriteLine(e.Message);
+        }
+    }
+
+}

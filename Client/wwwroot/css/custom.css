@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+#khdamat{
+    
+    font-size: 30px;
+    font-family: 'Droid Arabic Naskh', serif;
+}
+#maintitle{
+    font-size: 47px;
+    font-family: 'Droid Arabic Naskh', serif;
+}
+*{
+    font-family: 'Droid Arabic Naskh', serif;
+}
+#had{
+    background:none;
+    background-color: none;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+
+
+#myul li a{
+    color:black ;
+    
+}
+#btnupload{
+    position: relative;
+  overflow: hidden;
+}
+
+#btnupload2{
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+  }
+
+.trashbtn{
+  
+ 
+    
+    border: none;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    background: none;
+  }
+  #footergmd{
+      height: 50px;
+  }

@@ -1,0 +1,137 @@
+﻿@page "/gallery"
+
+<div id="footergmd" class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Gallery</h2>
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>Gallery</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container gallery-container">
+
+    <div class="row  ">
+
+        <div class="col-md-12 text-center ">
+            <h1> Welcome to my work  <button class="trashbtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></h1>
+
+
+
+
+        </div>
+
+    </div>
+    <div class="tz-gallery">
+
+
+        <div class="row">
+            <div class="col-md-12 text-right ">
+
+                <div id="btnupload" class="file btn btn-lg btn-primary">
+
+                    @*<input id="btnupload2" type="file" name="file" />*@
+                    <a href="/CreateImage" class="btn btn-primary">Upload Image</a>
+                </div>
+
+
+            </div>
+            @*اعملو كومنت
+        لو بصيت هنا هتلاقى ان الديف مكرره عشان يعرض الصور بس انت مش محتاج تعملها بالشكل ده   كل الى انت محتاجو ديف واحده بس لانك هتكررها باستخدام فور ايش و هى هتكرر مع نفسها ع حسب عدد الصور الى هتتعرض*@
+            @*  هستخدم الديف دى بس و ادخلها جوه فورايش*@
+            @foreach (var img in imageURL)
+            {
+                <div class="col-sm-6 col-md-4">
+                   @* <button class="fa fa-trash-o fa-2x trashbtn "></button>*@
+                    <a class="lightbox" href="@img">
+                        <img src="@img" alt="Sky">
+                    </a>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <img src="images/logos/logo-realestate.png" alt="">
+                    </div>
+                    <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                    <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Info Link</h3>
+                    </div>
+
+                    <ul class="twitter-widget footer-links">
+
+                        <li><a href="#"> Home </a></li>
+                        <li><a href="#"> About Us </a></li>
+                        <li><a href="#"> Services</a></li>
+                        <li><a href="#"> Gallery</a></li>
+                        <li><a href="#"> Properties</a></li>
+                        <li><a href="#"> Contact</a></li>
+                    </ul><!-- end links -->
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Contact Details</h3>
+                    </div>
+
+                    <ul class="footer-links">
+                        <li><a href="mailto:#">info@yoursite.com</a></li>
+                        <li><a href="#">www.yoursite.com</a></li>
+                        <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+                        <li>+61 3 8376 6284</li>
+                    </ul><!-- end links -->
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Social</h3>
+                    </div>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fa fa-github"></i> Github</a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i> Dribbble</a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+                    </ul><!-- end links -->
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+        </div><!-- end row -->
+    </div><!-- end container -->
+</footer><!-- end footer -->
+
+<div class="copyrights">
+
+</div><!-- end container -->
+
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>

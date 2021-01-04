@@ -1,0 +1,36 @@
+﻿@inject IRepository rep 
+<EditForm Model="Image" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label>Name:</label>
+        <div>
+            <InputText class="form-control" @bind-Value="Image.Imagedescription" />
+            <ValidationMessage For="@(() => Image.Imagedescription)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <ImageComponent Label="SelectPicture" OnSelectedImage="@OnSelect" ImageURL="@imageURL" />
+    </div>
+
+    <button class="btn btn-success" type="submit">Save</button>
+
+</EditForm>
+@code {
+
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    [Parameter]public Image Image { get; set; }
+    List<string> imageURL;
+    List<string> img = new List<string>();
+
+    void OnSelect(string imageBase64)
+    {
+
+        img.Add(imageBase64);
+        Image.Poster = img;
+        imageURL = null;
+
+    }
+
+
+}
