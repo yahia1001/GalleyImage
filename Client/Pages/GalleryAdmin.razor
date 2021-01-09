@@ -44,13 +44,10 @@
 
 
             </div>
-            @*اعملو كومنت
-        لو بصيت هنا هتلاقى ان الديف مكرره عشان يعرض الصور بس انت مش محتاج تعملها بالشكل ده   كل الى انت محتاجو ديف واحده بس لانك هتكررها باستخدام فور ايش و هى هتكرر مع نفسها ع حسب عدد الصور الى هتتعرض*@
-            @*  هستخدم الديف دى بس و ادخلها جوه فورايش*@
             @foreach (var img in imageURL)
             {
                 <div class="col-sm-6 col-md-4">
-                   @* <button class="fa fa-trash-o fa-2x trashbtn "></button>*@
+                  <button class="fa fa-trash-o fa-2x trashbtn" @onclick="@(() => DeleteAction(img))">Delete</button>
                     <a class="lightbox" href="@img">
                         <img src="@img" alt="Sky">
                     </a>

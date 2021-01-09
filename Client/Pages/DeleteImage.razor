@@ -1,0 +1,11 @@
+﻿@inject HttpClient Http
+@inject NavigationManager Navigate
+
+@code {
+    Image emp = new Image();
+    protected async Task Delete()
+    {
+        await Http.DeleteAsync("api/Gallery/Delete/");
+        Navigate.NavigateTo("/Gallery");
+    }
+}

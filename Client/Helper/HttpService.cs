@@ -47,11 +47,34 @@ namespace GalleryImage.Client.Helper
 
         }
 
+        public async Task<HttpResponseWrapper<bool>> DeleteFileAsync<T>(string url,string filePath)
+        {
+            var response = await httpClient.PostAsync(url,filePath);
+            if (response.IsSuccessStatusCode == true)
+            {
+                return new HttpResponseWrapper<bool>(default, true, response);
+            }
+            else
+            {
+           
+                return new HttpResponseWrapper<bool>(default, false, response);
+
+            }
+        }
+
         public async Task<HttpResponseWrapper<object>> Post<T>(string url, T data)
         {
             var dataJson = JsonSerializer.Serialize(data);
             var stringContent = new StringContent(dataJson, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(url, stringContent);
+            return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);
+        }
+
+        public async Task<HttpResponseWrapper<object>> Put<T>(string url, T data)
+        {
+            var dataJson = JsonSerializer.Serialize(data);
+            var stringContent = new StringContent(dataJson, Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(url, stringContent);
             return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);
         }
 

@@ -75,10 +75,29 @@ namespace GalleryImage.Server.Controllers
             return image.ImageID;
 
         }
+
         [HttpGet]
         public async Task<ActionResult<List<Image>>> Get()
         {
             return await context.Images.ToListAsync();
         }
+
+        [HttpDelete]
+        [Route("/api/DeleteFile")]
+        public IActionResult DeleteFile(string filePath)
+        {
+            try
+            {
+                var path = Path.Combine($"wwwroot/image",filePath);
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), path);
+                System.IO.File.Delete(pathToSave);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
     }
 }

@@ -40,6 +40,20 @@ namespace GalleryImage.Client.Helper
             }
         }
 
+        public async Task<bool> DeleteImage(string filePath)
+        {
+            var response = await httpService.DeleteFileAsync<bool>(url,filePath);
+
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+            else
+            {
+                return response.Response;
+            }
+        }
+
     }
 }
     

@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 namespace GalleryImage.Client.Pages
 {
     public partial class GalleryAdmin
-    {//ده بدايه 
-        //هنا جوا بتكتب اى فاريابول او فانكشن
-       [Inject] IRepository rep { get; set; }//
+    {
+       [Inject] IRepository rep { get; set; }
 
-        List<string> imageURL = new List<string>();//عرفت الفاريابل هنا عشان تقدر تستخدمو ف اى فانكشن 
+        List<string> imageURL = new List<string>(); 
         protected override async Task OnInitializedAsync()
         {
             try
@@ -26,34 +25,20 @@ namespace GalleryImage.Client.Pages
                 Console.WriteLine(e);
             }
         }
-    }//ده نهايه الكلاس
-    //مفيش حاجه بتكتبها برا نهايه الكلاس خالص
+
+        private async Task DeleteAction(string filePath)
+        {
+            try
+            {
+                await rep.DeleteImage(filePath);
+
+            }
+            catch (global::System.Exception ex)
+            {
+
+                global::System.Console.WriteLine(ex);
+            }
+        }
+
+    }
 }
-    
-
-    
-
-   
-
-
-            
-
-
-
-
-   
-
-    
-
-    
-
-    
-
-
-   
-
-
-
-
-    
-
